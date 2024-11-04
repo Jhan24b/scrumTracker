@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id                  String                @id @default(auto()) @map("_id") @db.ObjectId
+  nombre              String
+  email               String                @unique
+  password            String?
+  image               String?               // Para guardar la imagen de perfil de Google
+  emailVerified       DateTime?             // Para almacenar si el email ha sido verificado
+  accounts            Account[]             // Relación con la tabla de cuentas
+  sessions            Session[]             // Relación con la tabla de sesiones
+  events              Event[]
+  tasks               Task[]
+}
+
+model Account {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String    @map("user_id")
+  provider          String
+  providerAccountId String
+  type              String
+  access_token      String?
+  refresh_token     String?
+  expires_at        Int?
+  scope             String?
+  id_token          String?
+  token_type        String?
+  user              Usuario   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         Usuario  @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Event {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  description      String?
+  start            DateTime
+  end              DateTime
+  isAllDay         Boolean  @default(false)
+  notificationTime Int?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  Usuario               Usuario?   @relation(fields: [idUsuario], references: [id])
+  idUsuario             String?    @db.ObjectId
+}
+
+model Task {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  category    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  completed   Boolean  @default(false)
+  Usuario               Usuario?   @relation(fields: [idUsuario], references: [id])
+  idUsuario             String?    @db.ObjectId
+}

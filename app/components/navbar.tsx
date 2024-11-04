@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { Menu, Home, Clipboard, BarChart2, LogOut } from 'lucide-react';
+import { signOut } from 'next-auth/react';
 
 interface NavbarProps {
   userName: string;
@@ -34,6 +35,15 @@ export default function Navbar({ userName, userArea, userAvatar }: NavbarProps) 
     setTheme(currentTheme === 'dark' ? 'light' : 'dark');
   };
 
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error("Error signing out:", error);
+      // Handle the error gracefully, e.g., show a message to the user
+    }
+  };
+
   const NavContent = () => (
     <div className="flex flex-col h-full">
       <div className="flex flex-col items-center space-y-4 p-4">
@@ -59,7 +69,7 @@ export default function Navbar({ userName, userArea, userAvatar }: NavbarProps) 
         <Button variant="outline" className="w-full justify-start" onClick={toggleTheme}>
           {currentTheme === 'dark' ? '☀️ Modo Claro' : '🌙 Modo Oscuro'}
         </Button>
-        <Button variant="outline" className="w-full justify-start" onClick={() => console.log('Cerrar sesión')}>
+        <Button variant="outline" className="w-full justify-start" onClick={handleSignOut} >
           <LogOut className="mr-2 h-4 w-4" />
           Cerrar sesión
         </Button>

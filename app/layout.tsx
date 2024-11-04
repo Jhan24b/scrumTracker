@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "./components/navbar";
+import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "next-themes";
+import ClientLayout from "./ClientLayout";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,12 +29,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex w-full`}>
-        <ThemeProvider attribute="class">
-          <Navbar userName="Manuel" userArea="Desarrollo" userAvatar="blanquito" />
-          {children}
-        </ThemeProvider>
-      </body>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased flex w-full`}
+        >
+          <ThemeProvider attribute="class">
+            <Toaster />
+            <ClientLayout>{children}</ClientLayout>
+          </ThemeProvider>
+        </body>
     </html>
   );
 }

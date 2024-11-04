@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import ListaActividades from "./components/lista-actividades";
-import RegistroActividades from "./components/registro-actividades";
+import ListaActividades from "../components/lista-actividades";
+import RegistroActividades from "../components/registro-actividades";
 
 interface Actividad {
   id: string;
