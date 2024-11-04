@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { useTheme } from 'next-themes';
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,7 @@ import { useSearchParams } from 'next/navigation';
 
 export const dynamic = "force-dynamic"; // Force Next.js to treat this page as dynamic
 
-export default function Login() {
+function LoginComponent() {
   const { data: session } = useSession();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -63,5 +63,13 @@ export default function Login() {
         </Card>
       </div>
     </div>
+  );
+}
+
+export default function Login() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginComponent />
+    </Suspense>
   );
 }
