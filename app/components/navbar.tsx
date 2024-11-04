@@ -59,7 +59,7 @@ export default function Navbar({ userName, userArea, userAvatar }: NavbarProps) 
       <Separator className="my-4" />
       <nav className="flex-grow flex flex-col p-6">
         <ul className="space-y-6">
-          <NavItem icon={Home} label="Proyectos" href="/proyectos" />
+          <NavItem icon={Home} label="Proyectos" href="/" />
           <NavItem icon={Clipboard} label="Actividades" href="/actividades" />
           <NavItem icon={BarChart2} label="Dashboard" href="/dashboard" />
         </ul>

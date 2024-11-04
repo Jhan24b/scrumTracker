@@ -1,33 +1,34 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { signIn, useSession } from 'next-auth/react'
-import { useTheme } from 'next-themes'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Moon, Sun } from 'lucide-react'
-import { useSearchParams } from 'next/navigation'
+import { useState, useEffect } from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import { useTheme } from 'next-themes';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Moon, Sun } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
+
+export const dynamic = "force-dynamic"; // Force Next.js to treat this page as dynamic
 
 export default function Login() {
-  const { data: session } = useSession()
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  const searchParams = useSearchParams(); // Usamos esto para obtener el callbackUrl
+  const { data: session } = useSession();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/";
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null; // Avoids flash during hydration
 
   if (session) {
-    return null // O redirigir al usuario a la página principal
-  }
-
-  if (!mounted) {
-    return null // Evita el parpadeo durante la hidratación
+    // Optionally redirect the user if they are already logged in
+    return null;
   }
 
   return (
     <div className="flex flex-col md:flex-row h-screen">
-      {/* Sección de bienvenida */}
+      {/* Welcome Section */}
       <div className="w-full md:w-1/2 bg-gradient-to-br from-primary to-primary-foreground dark:from-primary-foreground dark:to-primary flex items-center justify-center p-8">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Bienvenido a nuestra plataforma</h1>
@@ -35,7 +36,7 @@ export default function Login() {
         </div>
       </div>
 
-      {/* Sección de login */}
+      {/* Login Section */}
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 bg-background">
         <Card className="w-full max-w-md">
           <CardContent className="flex flex-col items-center space-y-6 pt-6">
@@ -62,5 +63,5 @@ export default function Login() {
         </Card>
       </div>
     </div>
-  )
+  );
 }
