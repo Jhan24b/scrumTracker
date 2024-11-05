@@ -1,13 +1,13 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { Menu, Home, Clipboard, BarChart2, LogOut } from 'lucide-react';
-import { signOut } from 'next-auth/react';
+import { Menu, Home, Clipboard, BarChart2, LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
 
 interface NavbarProps {
   userName: string;
@@ -15,7 +15,11 @@ interface NavbarProps {
   userAvatar: string;
 }
 
-export default function Navbar({ userName, userArea, userAvatar }: NavbarProps) {
+export default function Navbar({
+  userName,
+  userArea,
+  userAvatar,
+}: NavbarProps) {
   const { theme, setTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -29,10 +33,10 @@ export default function Navbar({ userName, userArea, userAvatar }: NavbarProps) 
     return null; // Avoid rendering until theme has been mounted
   }
 
-  const currentTheme = theme === 'system' ? systemTheme : theme;
+  const currentTheme = theme === "system" ? systemTheme : theme;
 
   const toggleTheme = () => {
-    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    setTheme(currentTheme === "dark" ? "light" : "dark");
   };
 
   const handleSignOut = async () => {
@@ -40,12 +44,11 @@ export default function Navbar({ userName, userArea, userAvatar }: NavbarProps) 
       await signOut();
     } catch (error) {
       console.error("Error signing out:", error);
-      // Handle the error gracefully, e.g., show a message to the user
     }
   };
 
   const NavContent = () => (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full w-full">
       <div className="flex flex-col items-center space-y-4 p-4">
         <Avatar className="w-24 h-24">
           <AvatarImage src={userAvatar} alt={userName} />
@@ -57,19 +60,28 @@ export default function Navbar({ userName, userArea, userAvatar }: NavbarProps) 
         </div>
       </div>
       <Separator className="my-4" />
-      <nav className="flex-grow flex flex-col p-6">
+      <nav className="flex-grow flex flex-col p-6 w-full">
         <ul className="space-y-6">
-          <NavItem icon={Home} label="Proyectos" href="/" />
+          <NavItem icon={Home} label="Inicio" href="/" />
+          <NavItem icon={Home} label="Proyectos" href="/projects" />
           <NavItem icon={Clipboard} label="Actividades" href="/actividades" />
           <NavItem icon={BarChart2} label="Dashboard" href="/dashboard" />
         </ul>
       </nav>
       <Separator />
-      <div className="flex flex-col gap-4 px-4 py-4">
-        <Button variant="outline" className="w-full justify-start" onClick={toggleTheme}>
-          {currentTheme === 'dark' ? '☀️ Modo Claro' : '🌙 Modo Oscuro'}
+      <div className="flex gap-2 p-4 w-full">
+        <Button
+          variant="outline"
+          className="px-4"
+          onClick={toggleTheme}
+        >
+          {currentTheme === "dark" ? "☀️" : "🌙"}
         </Button>
-        <Button variant="outline" className="w-full justify-start" onClick={handleSignOut} >
+        <Button
+          variant="outline"
+          className="w-full justify-center"
+          onClick={handleSignOut}
+        >
           <LogOut className="mr-2 h-4 w-4" />
           Cerrar sesión
         </Button>
@@ -78,17 +90,21 @@ export default function Navbar({ userName, userArea, userAvatar }: NavbarProps) 
   );
 
   return (
-    <>
-      {/* Navbar para pantallas grandes */}
-      <div className="hidden md:flex flex-col h-screen w-64 bg-background border-r">
+    <div className="w">
+      {/* Navbar for larger screens */}
+      <div className="hidden md:flex flex-col h-screen w-72 bg-background border-r">
         <NavContent />
       </div>
 
-      {/* Botón y Sheet para pantallas pequeñas */}
+      {/* Button and Sheet for smaller screens */}
       <div className="md:hidden">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="fixed top-4 left-4 z-40">
+            <Button
+              variant="outline"
+              size="icon"
+              className="fixed top-4 left-4 z-40"
+            >
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
@@ -97,7 +113,7 @@ export default function Navbar({ userName, userArea, userAvatar }: NavbarProps) 
           </SheetContent>
         </Sheet>
       </div>
-    </>
+    </div>
   );
 }
 
