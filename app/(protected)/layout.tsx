@@ -2,7 +2,8 @@
 import { getServerSession } from "next-auth";
 
 import Navbar from "../components/navbar";
-import { auth } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
+
 
 export default async function RootLayout({
   children,
@@ -10,7 +11,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   // Obtiene la sesión en el lado del servidor
-  const session = await getServerSession(auth);
+  const session = await getServerSession(authOptions);
 
   // Extrae los datos necesarios del usuario
   const userName = session?.user?.name || "Invitado";
