@@ -63,9 +63,9 @@ export default function Navbar({
       <nav className="flex-grow flex flex-col p-6 w-full">
         <ul className="space-y-6">
           <NavItem icon={Home} label="Inicio" href="/" />
-          <NavItem icon={Home} label="Proyectos" href="/projects" />
+          {/* <NavItem icon={Home} label="Proyectos" href="/projects" />
           <NavItem icon={Clipboard} label="Actividades" href="/actividades" />
-          <NavItem icon={BarChart2} label="Dashboard" href="/dashboard" />
+          <NavItem icon={BarChart2} label="Dashboard" href="/dashboard" /> */}
         </ul>
       </nav>
       <Separator />
