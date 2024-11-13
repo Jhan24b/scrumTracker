@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { Menu, Home, Clipboard, BarChart2, LogOut } from "lucide-react";
+import { Menu, Home, LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
 
 interface NavbarProps {
