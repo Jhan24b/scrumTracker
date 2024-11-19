@@ -56,7 +56,7 @@ export default function ListaActividades({ onEditActividad }: { onEditActividad:
               <div><h3 className="font-semibold">{actividad.titulo}</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">{actividad.descripcion}</p></div>
               <div className="flex justify-between items-center mt-2 gap-4">
-                <span className="text-s text-cyan-800 font-bold">{actividad.estado}</span>
+                <span className="text-s text-cyan-800 font-bold w-[106px] px-2">{actividad.estado}</span>
                 <Button
                   onClick={() => handleActividadEdit(actividad)}
                   disabled={fechaSeleccionada !== getFormattedDate()}

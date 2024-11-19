@@ -19,9 +19,9 @@ export default async function RootLayout({
   const userAvatar = session?.user?.image || "/default-avatar.png"; // Ruta de avatar por defecto si no existe
 
   return (
-    <main className="h-screen font-inter">
-      <div className="min-h-screen bg-background text-foreground">
-        <div className="flex">
+    <main className="h-screen font-inter w-full">
+      <div className="min-h-screen bg-background text-foreground w-full">
+        <div className="flex w-full">
           <Navbar
             userName={userName}
             userArea={userArea}

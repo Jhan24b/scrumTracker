@@ -1,9 +1,11 @@
-import React from 'react'
+import ProjectView from '@/app/components/project-view'
+import { ThemeProvider } from 'next-themes'
 
-const page = () => {
+
+export default function ProjectsPage() {
   return (
-    <div>page</div>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <ProjectView />
+    </ThemeProvider>
   )
 }
-
-export default page

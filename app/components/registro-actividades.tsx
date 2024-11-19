@@ -147,9 +147,9 @@ function RegistroActividadesContent({
               <SelectValue placeholder="Seleccione el área" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="desarrollo">Administración</SelectItem>
-              <SelectItem value="diseno">Sistemas</SelectItem>
-              <SelectItem value="marketing">RR.HH.</SelectItem>
+              <SelectItem value="Administración">Administración</SelectItem>
+              <SelectItem value="Sistemas">Sistemas</SelectItem>
+              <SelectItem value="RR.HH.">RR.HH.</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -210,9 +210,9 @@ function RegistroActividadesContent({
               <SelectValue placeholder="Seleccione el estado" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="to-do">Pendiente</SelectItem>
-              <SelectItem value="doing">En Proceso</SelectItem>
-              <SelectItem value="done">Culminado</SelectItem>
+              <SelectItem value="Pendiente">Pendiente</SelectItem>
+              <SelectItem value="En Proceso">En Proceso</SelectItem>
+              <SelectItem value="Culminado">Culminado</SelectItem>
             </SelectContent>
           </Select>
         </div>

@@ -1,9 +1,14 @@
-import React from 'react'
+import ProjectDashboard from '@/app/components/project-dashboard'
+import { ThemeProvider } from 'next-themes'
 
-const page = () => {
+
+export default function DashboardPage() {
   return (
-    <div>page</div>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <div className="container mx-auto p-4">
+        <h1 className="text-3xl font-bold mb-6">Dashboard de Proyectos</h1>
+        <ProjectDashboard />
+      </div>
+    </ThemeProvider>
   )
 }
-
-export default page

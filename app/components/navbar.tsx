@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
-import { Menu, Home, LogOut } from "lucide-react";
+import { Menu, Home, LogOut, BarChart2 } from "lucide-react";
 import { signOut } from "next-auth/react";
 
 interface NavbarProps {
@@ -64,8 +64,8 @@ export default function Navbar({
         <ul className="space-y-6">
           <NavItem icon={Home} label="Inicio" href="/" />
           {/* <NavItem icon={Home} label="Proyectos" href="/projects" />
-          <NavItem icon={Clipboard} label="Actividades" href="/actividades" />
-          <NavItem icon={BarChart2} label="Dashboard" href="/dashboard" /> */}
+          <NavItem icon={Clipboard} label="Actividades" href="/actividades" /> */}
+          <NavItem icon={BarChart2} label="Dashboard" href="/dashboard" /> 
         </ul>
       </nav>
       <Separator />

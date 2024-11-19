@@ -32,7 +32,7 @@ export default function GestionActividades() {
 
   return (
       <div className="flex flex-col md:flex-row gap-4 px-10 py-4 w-full">
-        <div className=" md:w-[550px]">
+        <div className=" md:w-[660px]">
           <ListaActividades
             onEditActividad={handleEditActividad}
             key={actualizacionNecesaria.toString()}
