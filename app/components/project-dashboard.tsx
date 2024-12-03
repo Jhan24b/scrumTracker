@@ -41,10 +41,10 @@ export default function ProjectDashboard() {
   const areaChartData = Object.entries(areaData).map(([name, value]) => ({ name, value }))
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 w-full px-16 py-8">
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 w-full px-8">
       <Card className="col-span-full">
         <CardHeader>
-          <CardTitle>Resumen de Proyectos</CardTitle>
+          <CardTitle className=''>Resumen de Actividades</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{projects.length} Proyectos Totales</div>
@@ -60,7 +60,7 @@ export default function ProjectDashboard() {
             <PieChart>
               <Pie
                 data={statusData}
-                cx="50%"
+                cx="42%"
                 cy="50%"
                 labelLine={false}
                 outerRadius={80}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -34,7 +33,6 @@ const estadoColors = {
 
 export default function ProjectView() {
   const [actividades, setActividades] = useState<Actividad[]>([]);
-  const { theme } = useTheme();
 
   useEffect(() => {
     const storedActividades = localStorage.getItem("actividades");
@@ -55,8 +53,7 @@ export default function ProjectView() {
   }, {} as Record<string, Record<string, Actividad[]>>);
 
   return (
-    <div className="container mx-auto p-4 w-full">
-      <h1 className="text-3xl font-bold mb-6">Visualización de Proyectos</h1>
+    <div className="container mx-auto p-8 w-full">
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 w-full">
         {Object.entries(groupedActividades).map(([area, estados]) => (
           <Card
@@ -80,12 +77,25 @@ export default function ProjectView() {
                         className="mb-2 bg-white dark:bg-gray-700"
                       >
                         <CardContent className="p-4">
-                          <h4 className="font-medium">{actividad.titulo}</h4>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                          <div className="flex justify-between w-full">
+                            <h4 className="font-medium">{actividad.titulo}</h4>
+                            <p className="text-sm text-gray-400">
+                              {actividad.duracion + " horas"}
+                            </p>
+                          </div>
+                          <p className="text-sm text-gray-500 dark:text-gray-400 py-1">
                             {actividad.descripcion}
                           </p>
+                          {actividad.observaciones && (
+                            <h5 className="text-sm py-1 text-gray-600 dark:text-gray-200">
+                              Observaciones
+                            </h5>
+                          )}
                           {actividad.observaciones.map((obs, index) => (
-                            <li key={index} className="text-sm py-2 my-1 rounded-sm bg-slate-100 decoration-transparent">
+                            <li
+                              key={index}
+                              className="text-xs py-2 px-3 my-1 rounded-sm bg-slate-100 dark:bg-slate-600 decoration-transparent"
+                            >
                               {obs}
                             </li>
                           ))}
