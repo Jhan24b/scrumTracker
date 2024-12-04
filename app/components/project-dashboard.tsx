@@ -60,7 +60,7 @@ export default function ProjectDashboard() {
             <PieChart>
               <Pie
                 data={statusData}
-                cx="40%"
+                cx="30%"
                 cy="50%"
                 labelLine={false}
                 outerRadius={80}
