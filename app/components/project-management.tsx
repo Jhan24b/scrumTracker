@@ -183,7 +183,7 @@ export default function ProjectManagement() {
               <div>
                 <Label htmlFor="areas">Áreas</Label>
                 <div className="flex flex-wrap gap-2">
-                  {['Administración', 'Sistemas', 'RR.HH.'].map((area) => (
+                  {['Administración', 'Sistemas', 'RR.HH.', 'CAD'].map((area) => (
                     <Button
                       key={area}
                       type="button"
