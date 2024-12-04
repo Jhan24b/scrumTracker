@@ -26,9 +26,9 @@ export default function ProjectDashboard() {
   }, [])
 
   const statusCounts = {
-    'to-do': projects.filter(p => p.estado === 'Pendiente').length,
-    'doing': projects.filter(p => p.estado === 'En Proceso').length,
-    'done': projects.filter(p => p.estado === 'Culminado').length,
+    'Pendiente': projects.filter(p => p.estado === 'Pendiente').length,
+    'En Proceso': projects.filter(p => p.estado === 'En Proceso').length,
+    'Culminado': projects.filter(p => p.estado === 'Culminado').length,
   }
 
   const statusData = Object.entries(statusCounts).map(([name, value]) => ({ name, value }))
