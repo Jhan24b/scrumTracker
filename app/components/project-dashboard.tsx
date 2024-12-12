@@ -66,7 +66,7 @@ export default function ProjectDashboard() {
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="value"
-                label={({ name, percent }) => `${name} ${(percent * 60).toFixed(0)}%`}
+                label={({ name, percent }) => `${name} ${(percent * 30).toFixed(0)}%`}
               >
                 {statusData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
