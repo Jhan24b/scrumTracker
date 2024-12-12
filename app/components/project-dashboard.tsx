@@ -51,7 +51,7 @@ export default function ProjectDashboard() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className='w-[450px]'>
         <CardHeader>
           <CardTitle>Estado de Proyectos</CardTitle>
         </CardHeader>
@@ -78,7 +78,7 @@ export default function ProjectDashboard() {
         </CardContent>
       </Card>
 
-      <Card className="">
+      <Card className="col-span-1 md:col-span-2">
         <CardHeader>
           <CardTitle>Proyectos por Área</CardTitle>
         </CardHeader>
