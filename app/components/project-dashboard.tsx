@@ -51,7 +51,7 @@ export default function ProjectDashboard() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className='w-[450px]'>
         <CardHeader>
           <CardTitle>Estado de Proyectos</CardTitle>
         </CardHeader>
