@@ -78,7 +78,7 @@ export default function ProjectDashboard() {
         </CardContent>
       </Card>
 
-      <Card className="col-span-1 md:col-span-2">
+      <Card className="">
         <CardHeader>
           <CardTitle>Proyectos por Área</CardTitle>
         </CardHeader>
